@@ -1,4 +1,3 @@
 import mongoose from 'mongoose';
-const connectionString = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/socialNetworkDB';
-mongoose.connect(connectionString);
+mongoose.connect('mongodb://127.0.0.1:27017/socialNetworkDB', {});
 export default mongoose.connection;

@@ -10,11 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import User from '../models/user.js'; // Add ".js" to the import path
 export const getAllUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
-        const users = yield User.find();
-        res.json(users);
+        const users = yield User.find(); // Query all users
+        res.json(users); // Send the users as JSON
     }
     catch (err) {
-        res.status(500).json(err);
+        console.error('Error in getAllUsers:', err); // Log the error
+        res.status(500).json({ message: 'Internal server error', error: err });
     }
 });
 export const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
@@ -28,6 +29,12 @@ export const getUserById = (req, res) => __awaiter(void 0, void 0, void 0, funct
 });
 export const createUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
+        const { username, email } = req.body;
+        // Validate required fields
+        if (!username || !email) {
+            res.status(400).json({ message: 'Username and email are required.' });
+            return;
+        }
         const user = yield User.create(req.body);
         res.status(201).json(user);
     }
@@ -52,6 +59,32 @@ export const deleteUser = (req, res) => __awaiter(void 0, void 0, void 0, functi
             return;
         }
         res.json({ message: 'User deleted successfully' });
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+});
+export const addFriend = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const user = yield User.findByIdAndUpdate(req.params.userId, { $addToSet: { friends: req.params.friendId } }, { new: true });
+        if (!user) {
+            res.status(404).json({ message: 'User not found' });
+            return;
+        }
+        res.json(user);
+    }
+    catch (err) {
+        res.status(500).json(err);
+    }
+});
+export const removeFriend = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const user = yield User.findByIdAndUpdate(req.params.userId, { $pull: { friends: req.params.friendId } }, { new: true });
+        if (!user) {
+            res.status(404).json({ message: 'User not found' });
+            return;
+        }
+        res.json(user);
     }
     catch (err) {
         res.status(500).json(err);
