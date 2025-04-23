@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Output directory for compiled files
+    "rootDir": "./src"  // Root directory for source files
+  },
+  "include": ["src/**/*"], // Include all files in the src folder
+  "exclude": ["node_modules"] // Exclude node_modules folder
+}
