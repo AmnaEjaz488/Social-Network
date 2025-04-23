@@ -17,7 +17,6 @@ This is a back-end API for a social network web application where users can shar
   - [Friends](#friends)
 - [Technologies Used](#technologies-used)
 - [Walkthrough Video](#walkthrough-video)
-- [License](#license)
 
 ---
 
@@ -58,12 +57,7 @@ This is a back-end API for a social network web application where users can shar
 - **GET /api/users**: Get all users.
 - **GET /api/users/:userId**: Get a single user by ID.
 - **POST /api/users**: Create a new user.
-  - Example body:
-    ```json
-    {
-      "username": "testuser",
-      "email": "testuser@example.com"
-    }
+  - 
     ```
 - **PUT /api/users/:userId**: Update a user by ID.
 - **DELETE /api/users/:userId**: Delete a user by ID.
@@ -74,31 +68,7 @@ This is a back-end API for a social network web application where users can shar
 - **GET /api/thoughts**: Get all thoughts.
 - **GET /api/thoughts/:thoughtId**: Get a single thought by ID.
 - **POST /api/thoughts**: Create a new thought.
-  - Example body:
-    ```json
-    {
-      "thoughtText": "This is a test thought",
-      "username": "testuser"
-    }
-    ```
-- **PUT /api/thoughts/:thoughtId**: Update a thought by ID.
-- **DELETE /api/thoughts/:thoughtId**: Delete a thought by ID.
-
-### **Reactions**
-- **POST /api/thoughts/:thoughtId/reactions**: Add a reaction to a thought.
-  - Example body:
-    ```json
-    {
-      "reactionBody": "Great thought!",
-      "username": "testuser"
-    }
-    ```
-- **DELETE /api/thoughts/:thoughtId/reactions/:reactionId**: Remove a reaction from a thought.
-
-### **Friends**
-- **POST /api/users/:userId/friends/:friendId**: Add a friend to a user's friend list.
-- **DELETE /api/users/:userId/friends/:friendId**: Remove a friend from a user's friend list.
-
+  -
 ---
 
 ## Technologies Used
@@ -108,11 +78,13 @@ This is a back-end API for a social network web application where users can shar
 - **MongoDB**
 - **Mongoose**
 - **JavaScript**
+-**Insomnia**
 
 ---
 
 ## Walkthrough Video Link 
 
+https://app.screencastify.com/v3/watch/dNhXZZJThs919tFy464u
 
 ---
 
